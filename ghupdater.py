@@ -1,17 +1,19 @@
 import subprocess
 
-def update_github_repo(commit_message):
+def update_github_repo(commit_message, branch_name="main"):
     """Stages, commits, and pushes changes to a GitHub repository."""
 
     try:
-        subprocess.run(["sudo", "git", "add", "."], check=True)
-        subprocess.run(["sudo", "git", "status"], check=True)
-        subprocess.run(["sudo", "git", "commit", "-am", commit_message], check=True)
-        subprocess.run(["sudo", "git", "push", "origin", "main"], check=True)
+        subprocess.run(["git", "add", "."], check=True)
+        subprocess.run(["git", "commit", "-am", commit_message], check=True)
+        subprocess.run(["git", "push", "origin", branch_name], check=True)
         print("Changes pushed to GitHub successfully!")
     except subprocess.CalledProcessError as error:
-        print("Error occurred:", error)
+        print(f"Error occurred during Git command: {error}")
 
 # Example usage:
-commit_message = "Updated files"  # Replace with your desired commit message
-update_github_repo(commit_message)
+commit_message = "Updated files"
+update_github_repo(commit_message)  # Pushes to "main" branch by default
+
+# To push to a different branch:
+update_github_repo(commit_message, "feature-branch")
