@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import subprocess
 
 def update_github_repo(commit_message, branch_name="main"):
