@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-#Author: Arnold Vianna
-#https://github.com/arnold-vianna
+# Author: Arnold Vianna  
+# https://github.com/arnold-vianna
 
 import subprocess
 
@@ -15,8 +15,9 @@ def update_github_repo(commit_message, branch_name="main"):
         print("Changes pushed to GitHub successfully!")
     except subprocess.CalledProcessError as error:
         print(f"An error occurred during Git command: {error}")
+        raise # raise the original exception
 
-# Example usage:
+# Example usage: 
 commit_message = "Updated files"
 update_github_repo(commit_message)  # Pushes to "main" branch by default
 
