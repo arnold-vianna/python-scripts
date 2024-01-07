@@ -24,7 +24,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint flake8 black isort
 
-      - name: Run linters
+      - name: Run linters  # has all four pylint / flake8 / black / isort
         run: |
           flake8 .
           pylint .
